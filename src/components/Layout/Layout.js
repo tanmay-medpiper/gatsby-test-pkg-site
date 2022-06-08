@@ -21,7 +21,7 @@ const Layout = ({ children }) => {
   const { allGraphCmsDiagnosticTest, allGraphCmsPackage } =
     useStaticQuery(graphql`
       query MyQuery {
-        allGraphCmsDiagnosticTest(limit: 6) {
+        allGraphCmsDiagnosticTest {
           nodes {
             id
             fullName
