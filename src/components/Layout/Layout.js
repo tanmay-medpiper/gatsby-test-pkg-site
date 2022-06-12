@@ -1,17 +1,15 @@
-import * as React from "react"
+import { graphql, Link, useStaticQuery } from "gatsby"
 import { useState } from "react"
-import { Link } from "gatsby"
+import Card from "../Card/Card"
 import {
-  container,
-  navLinks,
-  navLinkItem,
-  navLinkText,
-  cards,
   cardItems,
+  cards,
+  container,
+  navLinkItem,
+  navLinks,
+  navLinkText,
   navLinkTextActive,
 } from "./Layout.module.css"
-import Card from "../Card/Card"
-import { graphql, useStaticQuery } from "gatsby"
 // import TestDetails from "../TestDetails/TestDetails"
 
 const Layout = ({ children }) => {
@@ -49,7 +47,6 @@ const Layout = ({ children }) => {
 
   return (
     <div>
-      
       <div className={container}>
         <nav>
           <ul className={navLinks}>

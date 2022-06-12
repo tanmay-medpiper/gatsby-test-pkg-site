@@ -1,22 +1,28 @@
-import React from "react"
+import { Link } from "gatsby"
 import {
   avatar,
-  cardContent,
-  headerTestTitle,
-  headerCategory,
-  cardHeader,
-  card,
-  cardPrice,
-  cardDescription,
-  cardFooter,
-  cardButton,
-  cardDescriptionSeeMore,
-  ul,
   buttonText,
+  card,
+  cardButton,
+  cardContent,
+  cardDescription,
+  cardDescriptionSeeMore,
+  cardFooter,
+  cardHeader,
+  cardPrice,
+  headerCategory,
+  headerTestTitle,
+  ul,
 } from "./Card.module.css"
-import { Link } from "gatsby"
 
-const Card = ({ fullName, testType, lisCode, shortName, date, id }) => {
+export default TestCard = ({
+  fullName,
+  testType,
+  lisCode,
+  shortName,
+  date,
+  id,
+}) => {
   return (
     <div className={card}>
       <div className={cardContent}>
@@ -61,7 +67,7 @@ const Card = ({ fullName, testType, lisCode, shortName, date, id }) => {
         <div className={cardFooter}>
           <button className={cardButton}>
             <Link
-              to="/description"
+              to="description"
               className={buttonText}
               state={{
                 fullName: fullName,
@@ -79,5 +85,3 @@ const Card = ({ fullName, testType, lisCode, shortName, date, id }) => {
     </div>
   )
 }
-
-export default Card
