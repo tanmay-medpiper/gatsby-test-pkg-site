@@ -46,6 +46,12 @@ const Layout = ({ children }) => {
             stage
             updatedAt
             id
+            tests {
+              ... on GraphCMS_DiagnosticTest {
+                id
+                fullName
+              }
+            }
           }
         }
       }
@@ -88,18 +94,18 @@ const Layout = ({ children }) => {
             </li>
             <li className={navLinkItem}>
               {/* <Link to="/" className={navLinkText}> */}
-                <span
-                  // onClick={() => {
-                  //   setAllMenu(false)
-                  //   setPackegesMenu(false)
-                  //   setTestsMenu(true)
-                  // }}
-                  // className={testsMenu ? navLinkTextActive : ""}
-                  className={navLinkText}
-                  aria-hidden="true"
-                >
-                  Tests
-                </span>
+              <span
+                // onClick={() => {
+                //   setAllMenu(false)
+                //   setPackegesMenu(false)
+                //   setTestsMenu(true)
+                // }}
+                // className={testsMenu ? navLinkTextActive : ""}
+                className={navLinkText}
+                aria-hidden="true"
+              >
+                Tests
+              </span>
               {/* </Link> */}
             </li>
           </ul>

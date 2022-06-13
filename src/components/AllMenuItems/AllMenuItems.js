@@ -32,10 +32,12 @@ const All_Items = ({ testData, packageData }) => {
                 id={data.id}
                 fullName={data.name}
                 shortName={data.mrp}
-                testType={data.offerPrice}
+                offerPrice={data.offerPrice}
                 date={data.updatedAt}
                 lisCode={data.name}
                 data={data}
+                isPackage={true}
+                tests={data.tests}
               />
             )
           })}

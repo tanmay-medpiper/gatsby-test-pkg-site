@@ -3,7 +3,7 @@ import {
   avatar,
   cardContent,
   headerTestTitle,
-  headerCategory,
+  // headerCategory,
   cardHeader,
   card,
   cardPrice,
@@ -17,7 +17,12 @@ import {
 import { Link } from "gatsby"
 import { kebabCase } from "lodash"
 
-const Card = ({ data, fullName, testType, lisCode, shortName, date, id }) => {
+const Card = ({ data, fullName, testType, lisCode, shortName, date, id, isPackage, offerPrice, tests }) => {
+  tests = tests.slice(0,5)
+
+  const testLists = (test) => {
+    return (<div>✓ {test.fullName}</div>)
+  }
   // console.log(data.name);
   return (
     <div className={card}>
@@ -25,7 +30,7 @@ const Card = ({ data, fullName, testType, lisCode, shortName, date, id }) => {
         <div className={cardHeader}>
           <div>
             <h4 className={headerTestTitle}>{fullName}</h4>
-            <p className={headerCategory}>{testType}</p>
+            {/* <p className={headerCategory}></p> */}
           </div>
           <div>
             <img
@@ -36,15 +41,16 @@ const Card = ({ data, fullName, testType, lisCode, shortName, date, id }) => {
           </div>
         </div>
         <div>
-          <h2 className={cardPrice}>Rs. 500</h2>
+          <h2 className={cardPrice}>{isPackage && offerPrice}</h2>
         </div>
         <div className={cardDescription}>
           <div className={ul}>
-            <div>✓ {fullName}</div>
+            {isPackage && tests.map(testLists)}
+            {/* <div>✓ {fullName}</div>
             <div>✓ {shortName}</div>
             <div>✓ {testType}</div>
             <div>✓ {lisCode}</div>
-            <div>✓ {date}</div>
+            <div>✓ {date}</div> */}
           </div>
           <Link
             to={kebabCase(data.name)}
