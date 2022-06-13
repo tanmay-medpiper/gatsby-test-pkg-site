@@ -15,6 +15,7 @@ import {
   buttonText,
 } from "./Card.module.css"
 import { Link } from "gatsby"
+import { kebabCase } from "lodash"
 
 const Card = ({ data, fullName, testType, lisCode, shortName, date, id }) => {
   // console.log(data.name);
@@ -46,7 +47,7 @@ const Card = ({ data, fullName, testType, lisCode, shortName, date, id }) => {
             <div>✓ {date}</div>
           </div>
           <Link
-            to={data.name}
+            to={kebabCase(data.name)}
             className={cardDescriptionSeeMore}
             key={id}
             // state={{
@@ -63,7 +64,7 @@ const Card = ({ data, fullName, testType, lisCode, shortName, date, id }) => {
         <div className={cardFooter}>
           <button className={cardButton}>
             <Link
-              to={data.name}
+              to={kebabCase(data.name)}
               className={buttonText}
               // state={{
               //   fullName: fullName,
@@ -81,7 +82,5 @@ const Card = ({ data, fullName, testType, lisCode, shortName, date, id }) => {
     </div>
   )
 }
-
-
 
 export default Card

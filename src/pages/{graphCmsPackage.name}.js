@@ -1,22 +1,34 @@
+import { graphql } from "gatsby"
 import React from "react"
 import TestDetails from "../components/TestDetails/TestDetails"
 
-const GraphCmsPackage = (props) => {
-  console.log(props);
+export default function PackagePage({ data }) {
+  React.useEffect(() => {
+    console.log("DATA", data)
+  }, [data])
   // if(!location.state){
   //   return null
   // }
-  // return (
-  //   <TestDetails
-  //     fullName={location.state.fullName}
-  //     shortName={location.state.shortName}
-  //     testType={location.state.testType}
-  //     lisCode={location.state.lisCode}
-  //     date={location.state.date}
-  //   />
-  // )
+  return (
+    <TestDetails
+      fullName={data.package.name}
+      shortName={data.package.offerPrice}
+      testType={""}
+      lisCode={""}
+      date={""}
+    />
+  )
 
-  return <div>Hello</div>
+  // return <div>Hello</div>
 }
 
-export default GraphCmsPackage
+export const pageQuery = graphql`
+  query PackagePageQuery($name: String) {
+    package: graphCmsPackage(name: { eq: $name }) {
+      id
+      name
+      offerPrice
+      mrp
+    }
+  }
+`
