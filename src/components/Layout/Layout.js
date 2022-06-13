@@ -87,19 +87,20 @@ const Layout = ({ children }) => {
               </Link>
             </li>
             <li className={navLinkItem}>
-              <Link to="/" className={navLinkText}>
+              {/* <Link to="/" className={navLinkText}> */}
                 <span
-                  onClick={() => {
-                    setAllMenu(false)
-                    setPackegesMenu(false)
-                    setTestsMenu(true)
-                  }}
-                  className={testsMenu ? navLinkTextActive : ""}
+                  // onClick={() => {
+                  //   setAllMenu(false)
+                  //   setPackegesMenu(false)
+                  //   setTestsMenu(true)
+                  // }}
+                  // className={testsMenu ? navLinkTextActive : ""}
+                  className={navLinkText}
                   aria-hidden="true"
                 >
                   Tests
                 </span>
-              </Link>
+              {/* </Link> */}
             </li>
           </ul>
         </nav>

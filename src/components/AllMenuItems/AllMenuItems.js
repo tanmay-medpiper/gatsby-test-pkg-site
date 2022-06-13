@@ -1,45 +1,46 @@
 import React from "react"
-import { useState } from "react"
+// import { useState } from "react"
 import Card from "../Card/Card"
-import { cards, cardItems, pagination } from "./AllMenuItems.module.css"
-import Pagination from "@mui/material/Pagination"
+import { cards, cardItems, /*pagination*/ } from "./AllMenuItems.module.css"
+// import Pagination from "@mui/material/Pagination"
 
 const All_Items = ({ testData, packageData }) => {
-  const totalPages = Math.ceil((testData.length + packageData.length) / 6)
-  const totalTestPages = Math.ceil(testData.length / 6)
-  const [currentItems, setCurrentItems] = useState(testData.slice(0, 6))
-  const [currentPageNumber, setCurrentPageNumeber] = useState(1)
+  // const totalPages = Math.ceil((testData.length + packageData.length) / 6)
+  // const totalTestPages = Math.ceil(testData.length / 6)
+  // const [currentItems, setCurrentItems] = useState(testData.slice(0, 6))
+  // const [currentPageNumber, setCurrentPageNumeber] = useState(1)
 
-  const handlePaginationChange = (event, value) => {
-    setCurrentPageNumeber(value)
+  // const handlePaginationChange = (event, value) => {
+  //   setCurrentPageNumeber(value)
 
-    if (value > totalTestPages) {
-      setCurrentItems(packageData.slice(0, 6))
-      console.log(currentPageNumber)
-    }
-    if (value <= totalTestPages) {
-      setCurrentItems(testData.slice((value - 1) * 6, (value - 1) * 6 + 6))
-    }
-  }
-
+  //   if (value > totalTestPages) {
+  //     setCurrentItems(packageData.slice(0, 6))
+  //     console.log(currentPageNumber)
+  //   }
+  //   if (value <= totalTestPages) {
+  //     setCurrentItems(testData.slice((value - 1) * 6, (value - 1) * 6 + 6))
+  //   }
+  // }
   return (
     <main className={cards}>
       <div className={cardItems}>
-        {currentPageNumber > totalTestPages &&
-          currentItems.map(data => {
+        {/* {currentPageNumber > totalTestPages && */}
+          {packageData.map(data => {
             return (
               <Card
                 key={data.id}
+                id={data.id}
                 fullName={data.name}
                 shortName={data.mrp}
                 testType={data.offerPrice}
                 date={data.updatedAt}
                 lisCode={data.name}
+                data={data}
               />
             )
           })}
-        {!(currentPageNumber > totalTestPages) &&
-          currentItems.map(data => {
+        {/* {!(currentPageNumber > totalTestPages) && */}
+          {/* {currentItems.map(data => {
             return (
               <Card
                 key={data.id}
@@ -48,11 +49,12 @@ const All_Items = ({ testData, packageData }) => {
                 testType={data.testType}
                 lisCode={data.lisCode}
                 date={data.updatedAt}
+                data={data}
               />
             )
-          })}
+          })} */}
       </div>
-      <div className={pagination}>
+      {/* <div className={pagination}>
         <Pagination
           count={totalPages}
           siblingCount={0}
@@ -60,7 +62,7 @@ const All_Items = ({ testData, packageData }) => {
           size="large"
           onChange={handlePaginationChange}
         />
-      </div>
+      </div> */}
     </main>
   )
 }

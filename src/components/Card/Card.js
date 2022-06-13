@@ -12,11 +12,12 @@ import {
   cardButton,
   cardDescriptionSeeMore,
   ul,
-  buttonText
+  buttonText,
 } from "./Card.module.css"
 import { Link } from "gatsby"
 
-const Card = ({ fullName, testType, lisCode, shortName, date, id }) => {
+const Card = ({ data, fullName, testType, lisCode, shortName, date, id }) => {
+  // console.log(data.name);
   return (
     <div className={card}>
       <div className={cardContent}>
@@ -45,15 +46,16 @@ const Card = ({ fullName, testType, lisCode, shortName, date, id }) => {
             <div>✓ {date}</div>
           </div>
           <Link
-            to="description"
+            to={data.name}
             className={cardDescriptionSeeMore}
-            state={{
-              fullName: fullName,
-              shortName: shortName,
-              testType: testType,
-              lisCode: lisCode,
-              date: date,
-            }}
+            key={id}
+            // state={{
+            //   fullName: fullName,
+            //   shortName: shortName,
+            //   testType: testType,
+            //   lisCode: lisCode,
+            //   date: date,
+            // }}
           >
             See all details...
           </Link>
@@ -61,15 +63,15 @@ const Card = ({ fullName, testType, lisCode, shortName, date, id }) => {
         <div className={cardFooter}>
           <button className={cardButton}>
             <Link
-              to="description"
+              to={data.name}
               className={buttonText}
-              state={{
-                fullName: fullName,
-                shortName: shortName,
-                testType: testType,
-                lisCode: lisCode,
-                date: date,
-              }}
+              // state={{
+              //   fullName: fullName,
+              //   shortName: shortName,
+              //   testType: testType,
+              //   lisCode: lisCode,
+              //   date: date,
+              // }}
             >
               Book Now
             </Link>
@@ -79,5 +81,7 @@ const Card = ({ fullName, testType, lisCode, shortName, date, id }) => {
     </div>
   )
 }
+
+
 
 export default Card
