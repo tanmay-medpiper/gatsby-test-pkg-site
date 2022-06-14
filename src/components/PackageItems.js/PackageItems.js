@@ -11,11 +11,14 @@ const PackageItems = ({ packageData }) => {
           return (
             <Card
               key={data.id}
+              data={data}
               fullName={data.name}
               shortName={data.mrp}
-              testType={data.offerPrice}
+              offerPrice={data.offerPrice}
               date={data.updatedAt}
               lisCode={data.name}
+              isPackage={true}
+              tests={data.tests}
             />
           )
         })}

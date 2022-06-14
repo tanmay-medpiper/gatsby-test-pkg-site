@@ -3,7 +3,7 @@ import {
   avatar,
   cardContent,
   headerTestTitle,
-  headerCategory,
+  // headerCategory,
   cardHeader,
   card,
   cardPrice,
@@ -12,18 +12,25 @@ import {
   cardButton,
   cardDescriptionSeeMore,
   ul,
-  buttonText
+  buttonText,
 } from "./Card.module.css"
 import { Link } from "gatsby"
+import { kebabCase } from "lodash"
 
-const Card = ({ fullName, testType, lisCode, shortName, date, id }) => {
+const Card = ({ data, fullName, testType, lisCode, shortName, date, id, isPackage, offerPrice, tests }) => {
+  tests = tests.slice(0,5)
+
+  const testLists = (test) => {
+    return (<div>✓ {test.fullName}</div>)
+  }
+  // console.log(data.name);
   return (
     <div className={card}>
       <div className={cardContent}>
         <div className={cardHeader}>
           <div>
             <h4 className={headerTestTitle}>{fullName}</h4>
-            <p className={headerCategory}>{testType}</p>
+            {/* <p className={headerCategory}></p> */}
           </div>
           <div>
             <img
@@ -34,26 +41,28 @@ const Card = ({ fullName, testType, lisCode, shortName, date, id }) => {
           </div>
         </div>
         <div>
-          <h2 className={cardPrice}>Rs. 500</h2>
+          <h2 className={cardPrice}>{isPackage && offerPrice}</h2>
         </div>
         <div className={cardDescription}>
           <div className={ul}>
-            <div>✓ {fullName}</div>
+            {isPackage && tests.map(testLists)}
+            {/* <div>✓ {fullName}</div>
             <div>✓ {shortName}</div>
             <div>✓ {testType}</div>
             <div>✓ {lisCode}</div>
-            <div>✓ {date}</div>
+            <div>✓ {date}</div> */}
           </div>
           <Link
-            to="description"
+            to={kebabCase(data.name)}
             className={cardDescriptionSeeMore}
-            state={{
-              fullName: fullName,
-              shortName: shortName,
-              testType: testType,
-              lisCode: lisCode,
-              date: date,
-            }}
+            key={id}
+            // state={{
+            //   fullName: fullName,
+            //   shortName: shortName,
+            //   testType: testType,
+            //   lisCode: lisCode,
+            //   date: date,
+            // }}
           >
             See all details...
           </Link>
@@ -61,15 +70,15 @@ const Card = ({ fullName, testType, lisCode, shortName, date, id }) => {
         <div className={cardFooter}>
           <button className={cardButton}>
             <Link
-              to="description"
+              to={kebabCase(data.name)}
               className={buttonText}
-              state={{
-                fullName: fullName,
-                shortName: shortName,
-                testType: testType,
-                lisCode: lisCode,
-                date: date,
-              }}
+              // state={{
+              //   fullName: fullName,
+              //   shortName: shortName,
+              //   testType: testType,
+              //   lisCode: lisCode,
+              //   date: date,
+              // }}
             >
               Book Now
             </Link>
