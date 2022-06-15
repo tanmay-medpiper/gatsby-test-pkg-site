@@ -3,19 +3,16 @@ import React from "react"
 import TestDetails from "../components/TestDetails/TestDetails"
 
 export default function PackagePage({ data }) {
-  React.useEffect(() => {
-    console.log("DATA", data)
-  }, [data])
-  // if(!location.state){
-  //   return null
-  // }
+  console.log(data);
   return (
     <TestDetails
       fullName={data.package.name}
-      shortName={data.package.offerPrice}
+      offerPrice={data.package.offerPrice}
       testType={""}
       lisCode={""}
       date={""}
+      tests = {data.package.tests}
+      isPackage={true}
     />
   )
 
@@ -29,6 +26,13 @@ export const pageQuery = graphql`
       name
       offerPrice
       mrp
+      tests {
+        ... on GraphCMS_DiagnosticTest {
+          id
+          fullName
+        }
+      }
+      name
     }
   }
 `

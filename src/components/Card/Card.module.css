@@ -13,6 +13,11 @@
   padding: 25px 0px;
   border-top: 1px solid #67676799;
   border-bottom: 1px solid #67676799;
+  /* min-height: 361.6px; */
+}
+
+.cardHeight{
+    min-height: 305.6px;
 }
 
 .headerTestTitle{
@@ -44,6 +49,7 @@
 .cardDescription{
     display: flex;
     justify-content: space-between;
+    min-height: 120px;
 }
 
 .cardDescriptionSeeMore{
