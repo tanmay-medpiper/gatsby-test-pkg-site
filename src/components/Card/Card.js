@@ -1,22 +1,20 @@
-import React from "react"
+import { kebabCase } from "lodash"
 import {
   avatar,
-  cardContent,
-  headerTestTitle,
-  headerCategory,
-  cardHeader,
-  card,
-  cardPrice,
-  cardDescription,
-  cardFooter,
-  cardButton,
-  cardDescriptionSeeMore,
-  ul,
   buttonText,
+  card,
+  cardButton,
+  cardContent,
+  cardDescription,
+  cardDescriptionSeeMore,
+  cardFooter,
+  cardHeader,
   cardHeight,
+  cardPrice,
+  headerCategory,
+  headerTestTitle,
+  ul,
 } from "./Card.module.css"
-// import { Link } from "gatsby"
-import { kebabCase } from "lodash"
 
 const Card = ({
   data,
@@ -38,7 +36,6 @@ const Card = ({
   const testLists = test => {
     return <div key={test.id}>✓ {test.fullName}</div>
   }
-  // console.log(data.name);
   return (
     <div className={card}>
       <div className={cardContent}>
@@ -52,7 +49,7 @@ const Card = ({
               <img
                 src="https://raw.githubusercontent.com/Ashwinvalento/cartoon-avatar/master/lib/images/female/68.png"
                 className={avatar}
-                alt="..."
+                alt="Test-Package-Avatar"
               />
             </div>
           </div>
@@ -72,13 +69,17 @@ const Card = ({
               className={cardDescriptionSeeMore}
               key={id}
               target="_blank"
-              rel="noreferrer"
+              rel="https://gatsbytestpkgsite.gatsbyjs.io"
             >
               See all details...
             </a>
           </div>
           <div className={cardFooter}>
-            <a href={kebabCase(fullName)} target="_blank" rel="noreferrer">
+            <a
+              href={kebabCase(fullName)}
+              target="_blank"
+              rel="https://gatsbytestpkgsite.gatsbyjs.io"
+            >
               <button className={cardButton}>
                 <span className={buttonText}>Book Now</span>
               </button>
