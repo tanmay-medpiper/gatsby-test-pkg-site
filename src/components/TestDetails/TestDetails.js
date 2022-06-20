@@ -36,7 +36,6 @@ const TestDetails = ({
     // firstHalfTests = tests.slice(0,(tests.length)/2)
     // secondHalfTests = tests.slcie(tests.length/2, tests.length)
   }
-  console.log(window.location.pathname);
 
   const testLists = test => {
     return (
