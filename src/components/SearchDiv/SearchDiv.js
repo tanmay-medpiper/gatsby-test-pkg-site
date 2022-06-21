@@ -4,6 +4,7 @@ import back from "../../images/Component 29 – 17.png"
 import search from "../../images/Component 9 – 1.png"
 import bgImage from "../../images/Mask Group 30.png"
 import CategoryBox from "./CategoryBox"
+import Layout from "../Layout/Layout"
 import {
   active,
   bookTestDiv,
@@ -61,7 +62,11 @@ const SearchDiv = () => {
         </div>
         {/* <!-- search div ends here --> */}
         <div className={categoryDiv}>
-          <div className={categoryType}>
+          <div>
+            <Layout />
+          </div>
+
+          {/* <div className={categoryType}>
             <a className={active} href="#">
               All
             </a>
@@ -79,7 +84,7 @@ const SearchDiv = () => {
             <CategoryBox />
             <CategoryBox />
             <CategoryBox />
-          </div>
+          </div> */}
           {/* <!-- category box ends here --> */}
         </div>
       </section>
