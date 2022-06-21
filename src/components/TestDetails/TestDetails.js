@@ -1,28 +1,44 @@
 import React from "react"
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined"
+import { Link } from "gatsby"
 import {
-  headerTestTitle,
-  headerTestCategory,
-  headerContents,
-  avatar,
-  headerTest,
-  testPrice,
-  header,
-  testDetailsCard,
-  crossIcon,
-  icon,
-  testHeader,
-  lists,
-  listItems,
-  testDetailsButton
+  avatar, crossIcon, header, headerContents, headerTest, headerTestCategory, headerTestTitle, icon, listItems, lists, testDetailsButton, testDetailsCard, testHeader, testPrice
 } from "./TestDetails.module.css"
 
-const TestDetails = ({fullName, shortName, testType, lisCode, date}) => {
+
+const TestDetails = ({
+  fullName,
+  shortName,
+  testType,
+  lisCode,
+  date,
+  isPackage,
+  isTest,
+  tests,
+  offerPrice,
+  priceOfTest,
+}) => {
+  let isTestLengthBigger = false
+  if (tests.length > 6) {
+    isTestLengthBigger = true
+    // firstHalfTests = tests.slice(0,(tests.length)/2)
+    // secondHalfTests = tests.slcie(tests.length/2, tests.length)
+  }
+  const testLists = test => {
+    return (
+      <li key={test.id}>
+        <span>✓ </span>
+        {test.fullName}
+      </li>
+    )
+  }
   return (
     <div className={testDetailsCard}>
       <div className={testHeader}>
         <div className={crossIcon}>
-          <CancelOutlinedIcon className={icon} />
+          <Link to="/">
+            <CancelOutlinedIcon className={icon} />
+          </Link>
         </div>
         <div className={header}>
           <div className={headerContents}>
@@ -33,59 +49,35 @@ const TestDetails = ({fullName, shortName, testType, lisCode, date}) => {
             />
             <div className={headerTest}>
               <h4 className={headerTestTitle}>{fullName}</h4>
-              <p className={headerTestCategory}>Category name</p>
+              <p className={headerTestCategory}>{isTest && testType}</p>
             </div>
           </div>
           <div>
-            <h2 className={testPrice}>Rs. 500</h2>
+            <h2 className={testPrice}>
+              {isPackage
+                ? offerPrice
+                : priceOfTest.length === 0
+                ? "NA"
+                : priceOfTest}
+            </h2>
           </div>
         </div>
       </div>
       <div className={lists}>
         <ul className={listItems}>
-          <li>
-            <span>✓ </span>{fullName}
-          </li>
-          <li>
-            <span>✓ </span>{shortName}
-          </li>
-          <li>
-            <span>✓ </span>{testType}
-          </li>
-          <li>
-            <span>✓ </span>{lisCode}
-          </li>
-          <li>
-            <span>✓ </span>{date}
-          </li>
-          <li>
-            <span>✓ </span>{fullName}
-          </li>
+          {isPackage && !isTestLengthBigger
+            ? tests.map(testLists)
+            : isPackage && tests.slice(0, tests.length / 2).map(testLists)}
         </ul>
-        <ul className={listItems}>
-          <li>
-            <span>✓ </span>{fullName}
-          </li>
-          <li>
-            <span>✓ </span>{shortName}
-          </li>
-          <li>
-            <span>✓ </span>{testType}
-          </li>
-          <li>
-            <span>✓ </span>{lisCode}
-          </li>
-          <li>
-            <span>✓ </span>{date}
-          </li>
-          <li>
-            <span>✓ </span>{fullName}
-          </li>
-        </ul>
+        {isPackage && isTestLengthBigger && (
+          <ul className={listItems}>
+            {tests.slice(tests.length / 2, tests.length).map(testLists)}
+          </ul>
+        )}
       </div>
 
       <div>
-          <button className={testDetailsButton}>Book Now</button>
+        <button className={testDetailsButton}>Book Now</button>
       </div>
     </div>
   )
