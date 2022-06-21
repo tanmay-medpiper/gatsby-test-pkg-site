@@ -23,55 +23,56 @@ const BookingForm = ({ fullName, offerPrice, tests, isPackage }) => {
   return (
     <>
       <div className={halfImage}>
-        <img src={bgImage} alt="bg-image" />
+        <img src={bgImage} alt="" />
       </div>
 
       <section>
         <div className={logo}>
           <a href="/">
-            <img width="60px" height="70px" src={Logo} alt="logo" />
+            <img width="60px" height="70px" src={Logo} alt="" />
           </a>
         </div>
         <hr />
         <div className={bookTestDiv}>
           <a href="/book/tests">
-            <img width="25px" height="25px" src={img1} alt="bookTest" />
+            <img width="25px" height="25px" src={img1} alt="" />
           </a>
         </div>
         <div className={wrapperBox}>
           <div className={left}>
             <form action="/" method="POST">
               <div className={full}>
-                <label>Full name</label>
-                <input type="text" />
+                <label htmlFor="name">Full name</label>
+                <input type="text" id="name"/>
               </div>
               <div className={half}>
-                <label>E-mail</label>
-                <input type="email" />
+                <label htmlFor="email">E-mail</label>
+                <input type="email" id="email"/>
               </div>
               <div className={half}>
-                <label>Mobile number</label>
-                <input type="number" />
+                <label htmlFor="mobileNumber">Mobile number</label>
+                <input type="number" id="mobileNumber"/>
               </div>
               <div className={full}>
-                <label>Address</label>
-                <input type="text" />
+                <label htmlFor="address">Address</label>
+                <input type="text" id="address"/>
               </div>
               <div className={half}>
-                <label>City</label>
-                <input type="text" />
+                <label htmlFor="city">City</label>
+                <input type="text" id="city"/>
               </div>
               <div className={half}>
-                <label>Pincode</label>
-                <input type="number" />
+                <label htmlFor="pincode">Pincode</label>
+                <input type="number" id="pincode"/>
               </div>
               <div className={`${full} ${greenText}`}>
-                <img width="15px" height="15px" src={check} alt="bg-image" />
+                <img width="15px" height="15px" src={check} alt="" />
                 &nbsp; We are servicing in your location!
               </div>
               <div className={`${half} ${consultationBox}`}>
-                <label>Consultation</label>
+                <label htmlFor="self">Consultation</label>
                 <input
+                  
                   type="radio"
                   id="self"
                   name="Consultation"
@@ -87,16 +88,16 @@ const BookingForm = ({ fullName, offerPrice, tests, isPackage }) => {
                 Others
               </div>
               <div className={half}>
-                <label>Test name</label>
-                <input type="text" />
+                <label htmlFor="testName">Test name</label>
+                <input type="text" id="testName"/>
               </div>
               <div className={half}>
-                <label>Date</label>
-                <input type="date" />
+                <label htmlFor="date">Date</label>
+                <input type="date" id="date"/>
               </div>
               <div className={half}>
-                <label>Time slot</label>
-                <input type="datetime-local" />
+                <label htmlFor="timeSlot">Time slot</label>
+                <input type="datetime-local" id="timeSlot"/>
               </div>
               <div>
                 <button type="submit" className={btn}>
