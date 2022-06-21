@@ -1,0 +1,151 @@
+  /* footer div styling */
+  /* .blueDiv {
+    width: 100vw;
+    background-color: #2D3B49;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+
+.contactBox {
+    border-top: 2px solid #f1f2f4;
+    border-bottom: 2px solid #f1f2f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 12px;
+    width: 50%;
+    padding: 80px 50px;
+    margin: 50px 50px 0px;
+    text-align: center;
+    line-height: 2;
+    font-weight: bold;
+}
+
+.contactBox form div,
+.contactBox form div input {
+    /* color: #f1f2f4; */
+    background: transparent;
+    padding: 7px;
+    border: none;
+    width: 100%;
+}
+
+.contactBox form div input {
+    border: 1px solid #f1f2f4;
+    border-radius: 22px;
+    width: 50%;
+    padding-left: 30px;
+    color: #f1f2f4;
+    margin: 10px 0px;
+    /* background-color: #122635; */
+}
+
+.contactBox form div button {
+    border: none;
+    background-color: #f1f2f4;
+    padding: 9px 40px;
+    color: #2D3B49;
+    font-weight: bold;
+    font-size: 12px;
+    border-radius: 18px;
+    position: relative;
+    z-index: 2;
+    transform: translateX(-30%);
+}
+
+
+/* footerbox styling */
+
+.footerBox {
+    width: 80%;
+    min-width: 50vh;
+    margin: 0;
+    padding: 0vh 10vw 5vh;
+}
+
+.footerRow div {
+    width: 100%;
+    display: flex;
+
+}
+
+.footerRow div .left,
+.footerRow div .right {
+    width: 50%;
+}
+
+
+.right img {
+    margin-left: auto;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.leftCol {
+    margin-left: 20px;
+    font-size: 11px;
+    font-weight: 300;
+    color: #f1f2f4;
+    flex-direction: column;
+    line-height: 1.8;
+}
+
+.rightRow img {
+    margin-top: 50px;
+}
+
+/* ------------------------------------------------------------- */
+/*              RESPONSIVE BEHAVIOUR STYLING                     */
+/* ------------------------------------------------------------- */
+
+
+
+@media (min-width: 100px) and (max-width: 900px) {
+
+
+    .hrDiv {
+        width: 80vw;
+        margin-left: auto;
+    }
+
+
+    section .searchDivWrap .blueDiv .contactBox,
+    section .searchDivWrap .blueDiv .contactBox form div input,
+    section .searchDivWrap .blueDiv .contactBox form div button,
+    section .searchDivWrap .blueDiv .footerBox {
+        width: 75%;
+    }
+
+    section .searchDivWrap .blueDiv .contactBox form div button {
+        margin: auto;
+        transform: translateX(1%);
+    }
+
+    section .searchDivWrap .blueDiv .footerBox .footerRow .firstRow {
+        padding: 0;
+        width: 100%;
+    }
+
+    section .searchDivWrap .blueDiv .footerBox .footerRow .secondRow {
+        flex-direction: column;
+        margin: auto;
+        padding: 0;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    section .searchDivWrap .blueDiv .footerBox .footerRow .secondRow .right {
+        transform: translateX(10%);
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    section .searchDivWrap .blueDiv {
+        width: 100vw;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+}

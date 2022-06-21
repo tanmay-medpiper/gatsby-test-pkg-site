@@ -1,22 +1,21 @@
-import React from "react"
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined"
-import {
-  headerTestTitle,
-  headerTestCategory,
-  headerContents,
-  avatar,
-  headerTest,
-  testPrice,
-  header,
-  testDetailsCard,
-  crossIcon,
-  icon,
-  testHeader,
-  lists,
-  listItems,
-  testDetailsButton,
-} from "./TestDetails.module.css"
 import { Link } from "gatsby"
+import {
+  avatar, 
+  crossIcon, 
+  header, 
+  headerContents, 
+  headerTest, 
+  headerTestCategory, 
+  headerTestTitle, 
+  icon, 
+  listItems, 
+  lists, 
+  testDetailsButton, 
+  testDetailsCard, 
+  testHeader, 
+  testPrice
+} from "./TestDetails.module.css"
 
 const TestDetails = ({
   fullName,
@@ -31,12 +30,11 @@ const TestDetails = ({
   priceOfTest,
 }) => {
   let isTestLengthBigger = false
-  if(tests.length > 6){
+  if (tests.length > 6) {
     isTestLengthBigger = true
     // firstHalfTests = tests.slice(0,(tests.length)/2)
     // secondHalfTests = tests.slcie(tests.length/2, tests.length)
   }
-
   const testLists = test => {
     return (
       <li key={test.id}>
@@ -78,12 +76,15 @@ const TestDetails = ({
       </div>
       <div className={lists}>
         <ul className={listItems}>
-          {(isPackage && !isTestLengthBigger) ? tests.map(testLists) : (isPackage) && tests.slice(0,(tests.length)/2).map(testLists)}
+          {isPackage && !isTestLengthBigger
+            ? tests.map(testLists)
+            : isPackage && tests.slice(0, tests.length / 2).map(testLists)}
         </ul>
-        {(isPackage && isTestLengthBigger) && 
-        <ul className={listItems}>
-          {tests.slice(((tests.length)/2), tests.length).map(testLists)}
-        </ul>}
+        {isPackage && isTestLengthBigger && (
+          <ul className={listItems}>
+            {tests.slice(tests.length / 2, tests.length).map(testLists)}
+          </ul>
+        )}
       </div>
 
       <div>
