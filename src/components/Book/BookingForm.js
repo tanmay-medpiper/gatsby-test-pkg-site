@@ -19,7 +19,7 @@ import Logo from "../../images/Asset 1-8.png"
 import check from "../../images/Group 7022.png"
 import img1 from "../../images/Component 29 – 17.png"
 
-const BookingForm = () => {
+const BookingForm = ({ fullName, offerPrice, tests, isPackage }) => {
   return (
     <>
       <div className={halfImage}>
@@ -107,44 +107,19 @@ const BookingForm = () => {
           </div>
           <div className={right}>
             <div>
-              <h2>Test/package name</h2>
+              <h2>{fullName}</h2>
               <div>
                 <div>
-                  <h1>Rs. 1200</h1>
+                  <h1>{offerPrice.length === 0 ? "NA" : offerPrice}</h1>
                   <div>
-                    <div>
+                    {isPackage && tests.map(test => {
+                      return (<div key={test.id}>
+                        <p>✓ &nbsp;{test.fullName}</p>
+                      </div>)
+                    })}
+                    {/* <div>
                       <p>✓ &nbsp;Lorem Ipsum is the dummy text.</p>
-                    </div>
-                    <div>
-                      <p>✓ &nbsp;Lorem Ipsum is the dummy text.</p>
-                    </div>
-                    <div>
-                      <p>✓ &nbsp;Lorem Ipsum is the dummy text.</p>
-                    </div>
-                    <div>
-                      <p>✓ &nbsp;Lorem Ipsum is the dummy text.</p>
-                    </div>
-                    <div>
-                      <p>✓ &nbsp;Lorem Ipsum is the dummy text.</p>
-                    </div>
-                    <div>
-                      <p>✓ &nbsp;Lorem Ipsum is the dummy text.</p>
-                    </div>
-                    <div>
-                      <p>✓ &nbsp;Lorem Ipsum is the dummy text.</p>
-                    </div>
-                    <div>
-                      <p>✓ &nbsp;Lorem Ipsum is the dummy text.</p>
-                    </div>
-                    <div>
-                      <p>✓ &nbsp;Lorem Ipsum is the dummy text.</p>
-                    </div>
-                    <div>
-                      <p>✓ &nbsp;Lorem Ipsum is the dummy text.</p>
-                    </div>
-                    <div>
-                      <p>✓ &nbsp;Lorem Ipsum is the dummy text.</p>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
