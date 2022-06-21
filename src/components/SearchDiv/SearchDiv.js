@@ -3,15 +3,15 @@ import Logo from "../../images/Asset 1-8.png"
 import back from "../../images/Component 29 – 17.png"
 import search from "../../images/Component 9 – 1.png"
 import bgImage from "../../images/Mask Group 30.png"
-import CategoryBox from "./CategoryBox"
+// import CategoryBox from "./CategoryBox"
 import Layout from "../Layout/Layout"
 import {
-  active,
+  // active,
   bookTestDiv,
   btn,
-  categoryBoxWrap,
+  // categoryBoxWrap,
   categoryDiv,
-  categoryType,
+  // categoryType,
   halfImage,
   logo,
   searchDiv,
@@ -23,7 +23,7 @@ const SearchDiv = () => {
   return (
     <>
       <div className={halfImage}>
-        <img src={bgImage} alt="bg-image" />
+        <img src={bgImage} alt="" />
       </div>
       <section>
         <div className={logo}>

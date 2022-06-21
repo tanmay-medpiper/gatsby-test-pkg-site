@@ -46,12 +46,12 @@ const IndexPage = () => {
   return (
     <>
       <section className={commonHolder}>
-        <img className={bgImage} src={mainBgImage} alt="background-image" />
+        <img  className={bgImage} src={mainBgImage} alt="background-img" />
 
-        <img width="55px" height="60px" src={Logo} alt="Dr. Swasth-logo" />
+        <img  width="55px" height="60px" src={Logo} alt="Dr. Swasth-logo" />
         <div className={floatRightOptions}>
-          <a href="#">Swasth card</a>
-          <a href="#" className={active}>
+          <a href="/">Swasth card</a>
+          <a href="/" className={active}>
             Swasth care
           </a>
         </div>
@@ -81,7 +81,7 @@ const IndexPage = () => {
             <div className={featureBox}>
               <div className={featureTitle}>
                 <div className={featureLogo}>
-                  <img src={backInTime} />
+                  <img alt="" src={backInTime} />
                 </div>
                 On Time arrival of our technician
               </div>
@@ -95,7 +95,7 @@ const IndexPage = () => {
             <div className={featureBox}>
               <div className={featureTitle}>
                 <div className={featureLogo}>
-                  <img src={tracking} />
+                  <img alt="" src={tracking} />
                 </div>
                 Sample tracking
               </div>
@@ -109,7 +109,7 @@ const IndexPage = () => {
             <div className={featureBox}>
               <div className={featureTitle}>
                 <div className={featureLogo}>
-                  <img src={mailInbox} />
+                  <img alt="" src={mailInbox} />
                 </div>
                 Reports received in inbox
               </div>
@@ -131,6 +131,7 @@ const IndexPage = () => {
 
           <div className={serviceDiv}>
             <img
+              
               className={circleImage}
               width="250px"
               height="250px"
@@ -185,27 +186,27 @@ const IndexPage = () => {
               <div className={packageTitle}>Explore packages</div>
               <div className={packageBox}>
                 <div className={packageLogo}>
-                  <img width="120px" height="120px" src={img1} />
+                  <img alt="" width="120px" height="120px" src={img1} />
                   PCOD
                 </div>
                 <div className={packageLogo}>
-                  <img width="120px" height="120px" src={img2} />
+                  <img alt="" width="120px" height="120px" src={img2} />
                   Natal
                 </div>
                 <div className={packageLogo}>
-                  <img width="120px" height="120px" src={img3} />
+                  <img alt="" width="120px" height="120px" src={img3} />
                   Men's Health
                 </div>
                 <div className={packageLogo}>
-                  <img width="120px" height="120px" src={img3} />
+                  <img alt="" width="120px" height="120px" src={img3} />
                   Diabetes
                 </div>
                 <div className={packageLogo}>
-                  <img width="120px" height="120px" src={img4} />
+                  <img alt="" width="120px" height="120px" src={img4} />
                   Mental Health
                 </div>
                 <div className={packageLogo}>
-                  <img width="120px" height="120px" src={img5} />
+                  <img alt="" width="120px" height="120px" src={img5} />
                   Oncology
                 </div>
               </div>
