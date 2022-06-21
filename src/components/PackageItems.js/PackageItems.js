@@ -4,6 +4,7 @@ import { cards, cardItems } from "./PackageItems.module.css"
 import Card from "../Card/Card"
 
 const PackageItems = ({ packageData }) => {
+  console.log(packageData);
   return (
     <main className={cards}>
       <div className={cardItems}>
