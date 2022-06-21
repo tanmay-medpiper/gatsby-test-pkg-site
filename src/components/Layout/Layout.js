@@ -1,6 +1,6 @@
-import * as React from "react"
-import { useState } from "react"
-import { Link } from "gatsby"
+import { graphql, Link, useStaticQuery } from "gatsby"
+import React, { useState } from "react"
+import Card from "../Card/Card"
 import {
   container,
   navLinks,
@@ -11,8 +11,6 @@ import {
 import AllMenuItems from "../AllMenuItems/AllMenuItems"
 import TestItems from "../TestItems/TestItems"
 import PackageItems from "../PackageItems.js/PackageItems"
-import { graphql, useStaticQuery } from "gatsby"
-
 // import ReactPaginate from "react-paginate"
 // import Pagination from "react-js-pagination"
 // import TestDetails from "../TestDetails/TestDetails"

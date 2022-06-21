@@ -1,20 +1,20 @@
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined"
 import { Link } from "gatsby"
 import {
-  avatar, crossIcon, header, headerContents, headerTest, headerTestCategory, headerTestTitle, icon, listItems, lists, testDetailsButton, testDetailsCard, testHeader, testPrice
-} from "./TestDetails.module.css"
-  header,
-  headerContents,
-  headerTest,
-  headerTestCategory,
-  headerTestTitle,
-  icon,
-  listItems,
-  lists,
-  testDetailsButton,
-  testDetailsCard,
-  testHeader,
-  testPrice,
+  avatar, 
+  crossIcon, 
+  header, 
+  headerContents, 
+  headerTest, 
+  headerTestCategory, 
+  headerTestTitle, 
+  icon, 
+  listItems, 
+  lists, 
+  testDetailsButton, 
+  testDetailsCard, 
+  testHeader, 
+  testPrice
 } from "./TestDetails.module.css"
 
 const TestDetails = ({
