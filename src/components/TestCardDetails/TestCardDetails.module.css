@@ -12,6 +12,7 @@
     height: 40px;
     background-color: transparent;
     border: none;
+    cursor: pointer;
 }
 .singleCategoryBox{
     position: relative;
@@ -63,6 +64,11 @@
     flex-direction: column;
     align-items: flex-end;
 }
+
+.bookBtn{
+    cursor: pointer;
+}
+
 .singleCategoryBox div .bookBtn{
     background-color: #2d3b49;
     color: #fff;
