@@ -1,5 +1,6 @@
 import React from "react"
-import BookingForm from "../../components/Book/BookingForm"
+import { graphql } from "gatsby"
+import BookingForm from "../../../components/Book/BookingForm"
 
 export default function Form(props) {
   console.log("book data", props)
