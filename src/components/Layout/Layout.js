@@ -1,6 +1,6 @@
-import { graphql, Link, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import React, { useState } from "react"
-import Card from "../Card/Card"
+// import Card from "../Card/Card"
 import {
   container,
   navLinks,
@@ -11,7 +11,6 @@ import {
 import AllMenuItems from "../AllMenuItems/AllMenuItems"
 import TestItems from "../TestItems/TestItems"
 import PackageItems from "../PackageItems.js/PackageItems"
-
 // import ReactPaginate from "react-paginate"
 // import Pagination from "react-js-pagination"
 // import TestDetails from "../TestDetails/TestDetails"
@@ -62,7 +61,7 @@ const Layout = ({ children }) => {
         <nav>
           <ul className={navLinks}>
             <li className={navLinkItem}>
-              <Link to="/" className={navLinkText}>
+              <span className={navLinkText}>
                 <span
                   onClick={() => {
                     setAllMenu(true)
@@ -74,10 +73,10 @@ const Layout = ({ children }) => {
                 >
                   All
                 </span>
-              </Link>
+              </span>
             </li>
             <li className={navLinkItem}>
-              <Link to="/" className={navLinkText}>
+              <span className={navLinkText}>
                 <span
                   onClick={() => {
                     setAllMenu(false)
@@ -89,10 +88,10 @@ const Layout = ({ children }) => {
                 >
                   Packages
                 </span>
-              </Link>
+              </span>
             </li>
             <li className={navLinkItem}>
-              <Link to="/" className={navLinkText}>
+              <span  className={navLinkText}>
               <span
                 onClick={() => {
                   setAllMenu(false)
@@ -105,7 +104,7 @@ const Layout = ({ children }) => {
               >
                 Tests
               </span>
-              </Link>
+              </span>
             </li>
           </ul>
         </nav>
