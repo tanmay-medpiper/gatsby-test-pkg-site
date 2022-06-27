@@ -39,7 +39,7 @@ import img3 from "../images/Mask Group 22-2.png"
 import img4 from "../images/Mask Group 22-3.png"
 import img5 from "../images/Mask Group 22-4.png"
 import img1 from "../images/Mask Group 22.png"
-import mainBgImage from "../images/shutterstock_1292496331.png"
+import mainBgImage from "../images/shutterstock_1292496331.webp"
 import tracking from "../images/tracking.png"
 
 const IndexPage = () => {
@@ -68,7 +68,7 @@ const IndexPage = () => {
         </div>
       </section>
       <div className={knowMore}>
-        <a href="/#knowMoreSection" style={{ visited: "none" }}>
+        <a href="/#knowMoreSection">
           Know more &nbsp;&nbsp;
           <img width="10px" src={downArrow} alt="arrowDown" />
         </a>
