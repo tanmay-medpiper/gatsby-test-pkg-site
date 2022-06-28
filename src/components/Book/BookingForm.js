@@ -22,8 +22,10 @@ import Logo from "../../images/Asset 1-8.png"
 import check from "../../images/Group 7022.png"
 import img1 from "../../images/Component 29 – 17.png"
 import { Link } from "gatsby"
+import { useSnackbar } from "notistack"
 
 const BookingForm = ({ fullName, offerPrice, tests, isPackage, packageId }) => {
+  const { enqueueSnackbar } = useSnackbar()
   const [formData, setFormData] = useState({
     fName: "",
     email: "",
@@ -73,8 +75,9 @@ const BookingForm = ({ fullName, offerPrice, tests, isPackage, packageId }) => {
   const submitHandler = async e => {
     e.preventDefault()
     console.log(formData)
-    const data = await graphcms.request(
-      `mutation addBooking($price: String!,
+    try {
+      const data = await graphcms.request(
+        `mutation addBooking($price: String!,
         $patientEmail: String!,
         $patientFullname: String!,
         $address: String!,
@@ -106,199 +109,205 @@ const BookingForm = ({ fullName, offerPrice, tests, isPackage, packageId }) => {
               patientFullname
             }
         }`,
-      {
-        price: offerPrice.toString(),
-        patientEmail: formData.email,
-        patientFullname: formData.fName,
-        address: formData.address,
-        mobile: formData.mobNum,
-        city: formData.city,
-        pincode: formData.pincode,
-        bookingFor: formData.consultation,
-        date: formData.bookingDate,
-        time: formData.timeSlotUnix,
-        type: "package",
-        bookingStatus: "booking_done",
-        id: packageId.toString()
-      }
-    )
-
-    console.log(JSON.stringify(data, undefined, 2))
+        {
+          price: offerPrice.toString(),
+          patientEmail: formData.email,
+          patientFullname: formData.fName,
+          address: formData.address,
+          mobile: formData.mobNum,
+          city: formData.city,
+          pincode: formData.pincode,
+          bookingFor: formData.consultation,
+          date: formData.bookingDate,
+          time: formData.timeSlotUnix,
+          type: "package",
+          bookingStatus: "booking_done",
+          id: packageId.toString(),
+        }
+      )
+      console.log(JSON.stringify(data, undefined, 2))
+      enqueueSnackbar("Booking Successful", { variant: "success" , autoHideDuration: 3000 })
+    } catch (error) {
+      console.error(JSON.stringify(error, undefined, 2))
+      enqueueSnackbar("Booking Not Successful", { variant: "error" })
+    }
   }
 
   return (
-    <>
-      <div className={halfImage}>
-        <img src={bgImage} alt="" />
-      </div>
+    
+      <>
+        <div className={halfImage}>
+          <img src={bgImage} alt="" />
+        </div>
 
-      <section>
-        <div className={logo}>
-          <a href="/">
-            <img width="60px" height="70px" src={Logo} alt="" />
-          </a>
-        </div>
-        <hr />
-        <div className={bookTestDiv}>
-          <a href="/book/tests">
-            <img width="25px" height="25px" src={img1} alt="" />
-          </a>
-        </div>
-        <div className={wrapperBox}>
-          <div className={left}>
-            <form action="/" method="POST" onSubmit={submitHandler}>
-              <div className={packageDetailsLink}>
-                <Link to={"/book/" + kebabCase(fullName) + "/details/"}>
-                  <h1>View Package Details</h1>
-                </Link>
-              </div>
-              <div className={full}>
-                <label htmlFor="name">Full name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="fName"
-                  onChange={inputHandler}
-                  value={formData.fName}
-                />
-              </div>
-              <div className={half}>
-                <label htmlFor="email">E-mail</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  onChange={inputHandler}
-                  value={formData.email}
-                />
-              </div>
-              <div className={half}>
-                <label htmlFor="mobileNumber">Mobile number</label>
-                <input
-                  type="text"
-                  id="mobileNumber"
-                  name="mobNum"
-                  onChange={inputHandler}
-                  value={formData.mobNum}
-                />
-              </div>
-              <div className={full}>
-                <label htmlFor="address">Address</label>
-                <input
-                  type="text"
-                  id="address"
-                  name="address"
-                  onChange={inputHandler}
-                  value={formData.address}
-                />
-              </div>
-              <div className={half}>
-                <label htmlFor="city">City</label>
-                <input
-                  type="text"
-                  id="city"
-                  name="city"
-                  onChange={inputHandler}
-                  value={formData.city}
-                />
-              </div>
-              <div className={half}>
-                <label htmlFor="pincode">Pincode</label>
-                <input
-                  type="text"
-                  id="pincode"
-                  name="pincode"
-                  onChange={inputHandler}
-                  value={formData.pincode}
-                />
-              </div>
-              <div className={`${full} ${greenText}`}>
-                <img width="15px" height="15px" src={check} alt="" />
-                &nbsp; We are servicing in your location!
-              </div>
-              <div
-                className={`${half} ${consultationBox}`}
-                onChange={inputHandler}
-              >
-                <label htmlFor="self">Consultation</label>
-                <input
-                  type="radio"
-                  id="self"
-                  name="consultation"
-                  value="SELF"
-                />{" "}
-                Self
-                <input
-                  type="radio"
-                  id="others"
-                  name="consultation"
-                  value="Others"
-                />{" "}
-                Others
-              </div>
-              <div className={half}>
-                <label htmlFor="testName">Test name</label>
-                <input
-                  type="text"
-                  id="testName"
-                  onChange={inputHandler}
-                  name="testName"
-                  value={formData.testName}
-                />
-              </div>
-              <div className={half}>
-                <label htmlFor="date">Date</label>
-                <input
-                  type="date"
-                  id="date"
-                  name="bookingDate"
-                  onChange={inputHandler}
-                  value={formData.bookingDate}
-                />
-              </div>
-              <div className={half}>
-                <label htmlFor="timeSlot">Time slot</label>
-                <input
-                  type="datetime-local"
-                  id="timeSlot"
-                  name="timeSlot"
-                  onChange={timeHandler}
-                  value={formData.timeSlot}
-                />
-              </div>
-              <div>
-                <button type="submit" className={btn}>
-                  Proceed to pay and back
-                </button>
-              </div>
-            </form>
+        <section>
+          <div className={logo}>
+            <a href="/">
+              <img width="60px" height="70px" src={Logo} alt="" />
+            </a>
           </div>
-          <div className={right}>
-            <div>
-              <h2>{fullName}</h2>
-              <div>
+          <hr />
+          <div className={bookTestDiv}>
+            <a href="/book/tests">
+              <img width="25px" height="25px" src={img1} alt="" />
+            </a>
+          </div>
+          <div className={wrapperBox}>
+            <div className={left}>
+              <form action="/" method="POST" onSubmit={submitHandler}>
+                <div className={packageDetailsLink}>
+                  <Link to={"/book/" + kebabCase(fullName) + "/details/"}>
+                    <h1>View Package Details</h1>
+                  </Link>
+                </div>
+                <div className={full}>
+                  <label htmlFor="name">Full name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="fName"
+                    onChange={inputHandler}
+                    value={formData.fName}
+                  />
+                </div>
+                <div className={half}>
+                  <label htmlFor="email">E-mail</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    onChange={inputHandler}
+                    value={formData.email}
+                  />
+                </div>
+                <div className={half}>
+                  <label htmlFor="mobileNumber">Mobile number</label>
+                  <input
+                    type="text"
+                    id="mobileNumber"
+                    name="mobNum"
+                    onChange={inputHandler}
+                    value={formData.mobNum}
+                  />
+                </div>
+                <div className={full}>
+                  <label htmlFor="address">Address</label>
+                  <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    onChange={inputHandler}
+                    value={formData.address}
+                  />
+                </div>
+                <div className={half}>
+                  <label htmlFor="city">City</label>
+                  <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    onChange={inputHandler}
+                    value={formData.city}
+                  />
+                </div>
+                <div className={half}>
+                  <label htmlFor="pincode">Pincode</label>
+                  <input
+                    type="text"
+                    id="pincode"
+                    name="pincode"
+                    onChange={inputHandler}
+                    value={formData.pincode}
+                  />
+                </div>
+                <div className={`${full} ${greenText}`}>
+                  <img width="15px" height="15px" src={check} alt="" />
+                  &nbsp; We are servicing in your location!
+                </div>
+                <div
+                  className={`${half} ${consultationBox}`}
+                  onChange={inputHandler}
+                >
+                  <label htmlFor="self">Consultation</label>
+                  <input
+                    type="radio"
+                    id="self"
+                    name="consultation"
+                    value="SELF"
+                  />{" "}
+                  Self
+                  <input
+                    type="radio"
+                    id="others"
+                    name="consultation"
+                    value="Others"
+                  />{" "}
+                  Others
+                </div>
+                <div className={half}>
+                  <label htmlFor="testName">Test name</label>
+                  <input
+                    type="text"
+                    id="testName"
+                    onChange={inputHandler}
+                    name="testName"
+                    value={formData.testName}
+                  />
+                </div>
+                <div className={half}>
+                  <label htmlFor="date">Date</label>
+                  <input
+                    type="date"
+                    id="date"
+                    name="bookingDate"
+                    onChange={inputHandler}
+                    value={formData.bookingDate}
+                  />
+                </div>
+                <div className={half}>
+                  <label htmlFor="timeSlot">Time slot</label>
+                  <input
+                    type="datetime-local"
+                    id="timeSlot"
+                    name="timeSlot"
+                    onChange={timeHandler}
+                    value={formData.timeSlot}
+                  />
+                </div>
                 <div>
-                  <h1>{offerPrice.length === 0 ? "NA" : offerPrice}</h1>
+                  <button type="submit" className={btn}>
+                    Proceed to pay and back
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div className={right}>
+              <div>
+                <h2>{fullName}</h2>
+                <div>
                   <div>
-                    {isPackage &&
-                      tests.map(test => {
-                        return (
-                          <div key={test.id}>
-                            <p>✓ &nbsp;{test.fullName}</p>
-                          </div>
-                        )
-                      })}
-                    {/* <div>
+                    <h1>{offerPrice.length === 0 ? "NA" : offerPrice}</h1>
+                    <div>
+                      {isPackage &&
+                        tests.map(test => {
+                          return (
+                            <div key={test.id}>
+                              <p>✓ &nbsp;{test.fullName}</p>
+                            </div>
+                          )
+                        })}
+                      {/* <div>
                       <p>✓ &nbsp;Lorem Ipsum is the dummy text.</p>
                     </div> */}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </>
+        </section>
+      </>
+    
   )
 }
 

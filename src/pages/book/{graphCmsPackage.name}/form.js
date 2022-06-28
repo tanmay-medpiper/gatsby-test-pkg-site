@@ -2,6 +2,7 @@ import React from "react"
 import BookingForm from "../../../components/Book/BookingForm"
 import { graphql } from "gatsby"
 import Seo from "../../../components/Seo"
+import {SnackbarProvider} from "notistack"
 
 export default function Form({ data }) {
   console.log("book data", data)
@@ -9,6 +10,7 @@ export default function Form({ data }) {
   // console.log(packageId);
   return (
     <div>
+      <SnackbarProvider>
       <Seo title={data.package.name}/>
       <BookingForm
         tests={data.package.tests}
@@ -17,6 +19,8 @@ export default function Form({ data }) {
         offerPrice={data.package.offerPrice}
         packageId={packageId}
       />
+
+      </SnackbarProvider>
     </div>
   )
 }
