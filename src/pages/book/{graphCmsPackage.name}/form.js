@@ -5,6 +5,8 @@ import Seo from "../../../components/Seo"
 
 export default function Form({ data }) {
   console.log("book data", data)
+  const packageId = data.package.id.substring(8,33)
+  // console.log(packageId);
   return (
     <div>
       <Seo title={data.package.name}/>
@@ -13,6 +15,7 @@ export default function Form({ data }) {
         fullName={data.package.name}
         isPackage={true}
         offerPrice={data.package.offerPrice}
+        packageId={packageId}
       />
     </div>
   )

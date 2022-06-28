@@ -163,6 +163,9 @@ section .wrapperBox .left .greenText {
     margin-top: 20px;
 }
 
+.packageDetailsLink  h1{
+    display: none;
+}
 
 /* ------------------------------------------------------------- */
 /*              RESPONSIVE BEHAVIOUR STYLING                     */
@@ -170,6 +173,18 @@ section .wrapperBox .left .greenText {
 
 
 @media (min-width: 100px) and (max-width: 900px) {
+    .packageDetailsLink h1{
+        display: contents;
+    }
+
+    .packageDetailsLink {
+        display: block;
+        text-align: center;
+        width: 100%;
+        color: #72B15A;
+        text-decoration: underline;
+        cursor: pointer;
+    }
 
     section .wrapperBox {
         flex-direction: column;
